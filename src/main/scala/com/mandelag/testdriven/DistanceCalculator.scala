@@ -1,11 +1,12 @@
 package com.mandelag.testdriven
 
-import akka.actor.{Actor, Props}
+import akka.actor.Actor
 
 object DistanceCalculator {
     case class Coordinate(x: Double, y: Double)
     case class CalculateDistance(c1: Coordinate, c2: Coordinate)
 }
+
 
 class DistanceCalculator extends Actor {
     import DistanceCalculator._
