@@ -6,8 +6,7 @@ import org.scalatest.WordSpecLike
 
 class Test01 extends TestKit(ActorSystem("test-system")) 
     with WordSpecLike
-    with StopSystemAfterAll
-    with ImplicitSender {
+    with StopSystemAfterAll {
     
     "DistanceCalculator" must {
         import DistanceCalculator._
