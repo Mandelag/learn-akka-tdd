@@ -24,4 +24,13 @@ class Test01 extends TestKit(ActorSystem("test-system"))
             expectMsg(5)
         }
     }
+    
+    "Return a point between two points correctly, within certain epsilon" in {
+        val EPSILON = 0.001
+        
+        val distanceCalculator = TestActorRef[DistanceCalculator]
+        
+        distanceCalculator ! CenterPoint(Coordinate(100, 50), Coordinate(-100, -50))
+        expectMsg(0)
+    }
 }
