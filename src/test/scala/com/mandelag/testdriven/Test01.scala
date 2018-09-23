@@ -10,12 +10,19 @@ class Test01 extends TestKit(ActorSystem("test-system"))
     with ImplicitSender {
     
     "DistanceCalculator" must {
+        import DistanceCalculator._
         "Calculate distance between two coordinate correctly" in {
-            import DistanceCalculator._
+            
             val distanceCalculator  = TestActorRef[DistanceCalculator]
             
-            distanceCalculator ! CoordinatePair(Coordinate(1, 0), Coordinate(50, 0))
+            distanceCalculator ! CalculateDistance(Coordinate(1, 0), Coordinate(50, 0))
             expectMsg(49)
+            
+            distanceCalculator ! CalculateDistance(Coordinate(1, 0), Coordinate(-10, 0))
+            expectMsg(11)
+            
+            distanceCalculator ! CalculateDistance(Coordinate(4,0), Coordinate(0,3))
+            expectMsg(5)
         }
     }
 }
