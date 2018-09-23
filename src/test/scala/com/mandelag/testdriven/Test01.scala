@@ -3,10 +3,12 @@ package com.mandelag.testdriven
 import akka.testkit.{TestKit, TestActorRef, ImplicitSender}
 import akka.actor.{ActorSystem, Props}
 import org.scalatest.WordSpecLike
+import scala.concurrent.duration.DurationInt
 
 class Test01 extends TestKit(ActorSystem("test-system")) 
     with WordSpecLike
-    with StopSystemAfterAll {
+    with StopSystemAfterAll
+    with ImplicitSender {
     
     "DistanceCalculator" must {
         import DistanceCalculator._
@@ -28,8 +30,8 @@ class Test01 extends TestKit(ActorSystem("test-system"))
             
             val distanceCalculator = TestActorRef[DistanceCalculator]
             
-            val centerPoint = distanceCalculator ! CenterPoint(Coordinate(100, 50), Coordinate(-100, -50))
-            assert(centerPoint.equals(Coordinate(0,0)))
+            distanceCalculator ! CenterPoint(Coordinate(100, 50), Coordinate(-100, -50))
+            expectMsg(Coordinate(0.00005, 0.0005))
         }
     }
 }
