@@ -3,7 +3,17 @@ package com.mandelag.testdriven
 import akka.actor.Actor
 
 object DistanceCalculator {
-    case class Coordinate(x: Double, y: Double)
+    case class Coordinate(x: Double, y: Double) {
+        override def equals(other: Any) = {
+            val EPSILON: Double = 0.001
+            other match {
+                case Coordinate(x, y) => {
+                    (this.x - x) <  EPSILON && (this.y - y) < EPSILON
+                }
+                case _ => false
+            }
+        }
+    }
     case class CalculateDistance(c1: Coordinate, c2: Coordinate)
 }
 
