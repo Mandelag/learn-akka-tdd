@@ -15,6 +15,7 @@ object DistanceCalculator {
         }
     }
     case class CalculateDistance(c1: Coordinate, c2: Coordinate)
+    case class CenterPoint(c1: Coordinate, c2: Coordinate)
 }
 
 
