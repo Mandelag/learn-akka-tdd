@@ -8,9 +8,14 @@ class SilentActorSpec extends TestKit(ActorSystem("test-silent-actor"))
     with WordSpecLike 
     with StopSystemAfterAll {
     
-    "SilentActor" must {
+    "RememberingActor" must {
+        import RememberingActor._
+        
+        val rememberingActor = TestActorRef[RememberingActor]
+    
         "Melihat state " in {
-            fail("Not implemented yet!")
+            rememberingActor ! See("Burung")
+            rememberingActor.underlyingActor.whatISee equals "I see Burung"
         }
         
         "Mendengar state " in {
