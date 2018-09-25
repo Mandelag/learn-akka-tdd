@@ -18,7 +18,9 @@ object DistanceCalculator {
     case class CenterPoint(c1: Coordinate, c2: Coordinate)
 }
 
-
+/** Learning to test Sending Actor (not yet done all of them)
+ * Next I will learn about Silent Actor and then Side-effecting Actor.
+ */
 class DistanceCalculator extends Actor {
     import DistanceCalculator._
     
