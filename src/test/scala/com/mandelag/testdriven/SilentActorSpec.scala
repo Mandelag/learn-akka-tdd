@@ -16,6 +16,8 @@ class SilentActorSpec extends TestKit(ActorSystem("test-silent-actor"))
         "Melihat state " in {
             rememberingActor ! See("Burung")
             rememberingActor.underlyingActor.whatISee equals "I see Burung"
+            rememberingActor ! See("I see")
+            rememberingActor.underlyingActor.whatISee equals "I see I see"
         }
         
         "Mendengar state " in {
