@@ -19,16 +19,19 @@ class RememberingActor extends Actor {
     
     def receive = {
         case See(x) => {
-            whatISee = x
+            whatISee = s"I see $x"
         }
         case Observe(x) => {
-            whatIObserve = x
+            whatIObserve = "I've observed a"
+            val y = x.toLowerCase()
+            if (y.charAt(0) == 'a' || y.charAt(0) == 'i' || y.charAt(0) == 'u' || y.charAt(0) == 'e'|| y.charAt(0) == 'o' ) whatIObserve += "n"
+            whatIObserve += s" $x"
         }
         case Hear(x) => {
-            whatIHear = x
+            whatIHear = s"I hear $x"
         }
         case Listen(x) => {
-            whatIListen = x
+            whatIListen = s"I listen to $x"
         }
     }
 }
