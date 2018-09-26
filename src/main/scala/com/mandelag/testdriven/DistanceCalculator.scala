@@ -34,7 +34,7 @@ class DistanceCalculator extends Actor {
     }
     
     private def calculateDistance(c1: Coordinate, c2: Coordinate): Double = {
-        100.0
+        Math.sqrt( Math.pow(c1.x-c2.x, 2) + Math.pow(c1.y-c2.y, 2) )
     }
     
     private def centerPoint(c1: Coordinate, c2: Coordinate): Coordinate = {
