@@ -24,13 +24,14 @@ class SilentActorSpec extends TestKit(ActorSystem("test-silent-actor"))
         "Mendengar state " in {
             val testString = "bzzztststststs"
             rememberingActor ! Hear(testString)
-            rememberingActor.underlyingActor.asInstanceOf[RememberingActor].whatIHear must be("I hear bzzztststststs")
+            rememberingActor.underlyingActor.whatIHear must be("I hear bzzztststststs")
         }
+        
         
         "Mengamati state " in {
             val testString = "kuda laut loncat"
             rememberingActor ! Observe(testString)
-            rememberingActor.underlyingActor.whatIObserve must be("I observed a kuda laut loncat")
+            rememberingActor.underlyingActor.whatIObserve must be("I've observed a kuda laut loncat")
             
         }
         
