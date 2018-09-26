@@ -17,13 +17,13 @@ class Test01 extends TestKit(ActorSystem("test-system"))
             val distanceCalculator  = TestActorRef[DistanceCalculator]
             
             distanceCalculator ! CalculateDistance(Coordinate(1, 0), Coordinate(50, 0))
-            expectMsg(49)
+            expectMsg(49.0)
             
             distanceCalculator ! CalculateDistance(Coordinate(1, 0), Coordinate(-10, 0))
-            expectMsg(11)
+            expectMsg(11.0)
             
             distanceCalculator ! CalculateDistance(Coordinate(4,0), Coordinate(0,3))
-            expectMsg(5)
+            expectMsg(5.0)
         }
         "Return a point between two points correctly, within certain epsilon" in {
             val EPSILON = 0.001
