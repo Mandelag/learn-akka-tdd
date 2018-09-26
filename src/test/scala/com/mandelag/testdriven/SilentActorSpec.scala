@@ -15,13 +15,29 @@ class SilentActorSpec extends TestKit(ActorSystem("test-silent-actor"))
     
         "Melihat state " in {
             rememberingActor ! See("Burung")
-            rememberingActor.underlyingActor.whatISee equals "I see Burung"
+            assert(rememberingActor.underlyingActor.whatISee.equals("I see Burung"))
             rememberingActor ! See("I see")
-            rememberingActor.underlyingActor.whatISee equals "I see I see"
+            assert(rememberingActor.underlyingActor.whatISee.equals("I see I see"))
         }
         
         "Mendengar state " in {
-            fail("Not implemented yet.")
+            val testString = "bzzztststststs"
+            rememberingActor ! Hear(testString)
+            assert(rememberingActor.underlyingActor.whatIHear.equals("I hear $testString"))
         }
+        
+        "Mengamati state " in {
+            val testString = "kuda laut loncat"
+            rememberingActor ! Observe(testString)
+            assert(rememberingActor.underlyingActor.whatIObserve.equals("I observed a $testString"))
+        }
+        
+        "Menyimak state in " {
+            val testString = "Jeff Lyne"
+            rememberingActor ! Listen(testString)
+            assert(rememberingActor.underlyingActor.whatIListen.equals("I listen to $testString"))
+            
+        }
+        
     }
 }
