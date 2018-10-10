@@ -22,7 +22,11 @@ class DownloaderActorTest extends TestKit(ActorSystem("test-system"))
         }
 
         "Give some URL response." in {
-            fail("not implemented yet")
+            val mutualFundsDownloader = system.actorOf(props(testUrl))
+            mutualFundsDownloader ! GetData()
+            expectMsgPF() {
+                case other => println(other)
+            }
         }
 
     }
