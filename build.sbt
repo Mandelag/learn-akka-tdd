@@ -12,6 +12,8 @@ libraryDependencies ++= {
         "com.typesafe.akka" %% "akka-actor" % akkaVersion,
         "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
         "com.typesafe.akka" %% "akka-testkit" % akkaVersion,
+        "com.typesafe.akka" %% "akka-http" % "10.1.5",
+        "com.typesafe.akka" %% "akka-stream" % "2.5.12",
         "org.scalatest" %% "scalatest" % "3.0.0" % "test"
     )
 }
