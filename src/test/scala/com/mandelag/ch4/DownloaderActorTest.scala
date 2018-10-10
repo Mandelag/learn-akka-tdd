@@ -12,11 +12,18 @@ class DownloaderActorTest extends TestKit(ActorSystem("test-system"))
     with StopSystemAfterAll {
     
     "DownloaderActor" must {
+        import DownloaderActor._
+        val testUrl = "https://www.bca.co.id/api/sitecore/Marketplace/GetReksadanaKinerjaGridJsonAll?_=1539184962533"
+            
         "Able to send the URL that has been assigned." in {
-            val testUrl = "https://www.bca.co.id/api/sitecore/Marketplace/GetReksadanaKinerjaGridJsonAll?_=1539184962533"
-            val mutualFundsDownloader = system.actorOf(DownloaderActor.props(testUrl))
-            mutualFundsDownloader ! DownloaderActor.Fetch()
+            val mutualFundsDownloader = system.actorOf(props(testUrl))
+            mutualFundsDownloader ! Fetch()
             expectMsg(testUrl)
         }
+
+        "Give some URL response." in {
+            fail("not implemented yet")
+        }
+
     }
 }
