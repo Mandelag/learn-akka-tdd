@@ -1,14 +1,19 @@
 package com.mandelag.ch4
 
-import akka.actor.Actor 
+import akka.actor._
 
-object DownloaderActor(url: String){
-    def props = new Props(new DownloaderActor(url))
-    case class Fetch
+object DownloaderActor {
+    def props(url: String) = Props(new DownloaderActor(url))
+    case class Fetch()
+    case class GetData()
+    case class DownloadedData(str: String)
 }
 class DownloaderActor(url: String) extends Actor {
     import DownloaderActor._
     def receive =  {
-        case _: => sender() ! url
+        case Fetch() => sender() ! url
+        case GetData() => sender() ! getData
     }
+
+    private def getData = ???
 }
