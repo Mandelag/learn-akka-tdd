@@ -1,13 +1,11 @@
-import java.time.Duration
-
-import scala.concurrent.{Await, Future, TimeoutException}
-import scala.util.{Failure, Success}
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
-
 object PavingMyFutures {
 
   def main(args: Array[String]): Unit = {
+    import scala.concurrent.{Await, Future, TimeoutException}
+    import scala.util.{Failure, Success}
+    import scala.concurrent.ExecutionContext.Implicits.global
+    import scala.concurrent.duration._
+
     val future: Future[String] = Future[String] {
       Thread.sleep(4000)
       //println("yeu")
