@@ -28,5 +28,4 @@ object PavingMyFutures {
     // It needs thread sleep, or use Await.result
     // https://docs.scala-lang.org/overviews/core/futures.html#callbacks
   }
-
 }
